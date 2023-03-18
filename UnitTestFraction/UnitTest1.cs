@@ -122,6 +122,14 @@ namespace FractionLib
             }
 
             [TestMethod]
+            public void ZeroPow()
+            {
+                var ell = new Fraction(6, 7);
+                ell.Pow(0);
+                Assert.AreEqual(ell, new Fraction(1, 1));
+            }
+
+            [TestMethod]
             public void Plus()
             {
                 var el1 = new Fraction(1, 2);

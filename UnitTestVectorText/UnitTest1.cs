@@ -31,9 +31,54 @@ namespace VectorText
                     " привлечь актеров, которые смогли бы сыграть его" +
                     " произведения, — так появился театр. ");
             }
-            VectorText vectorText = new VectorText(path);
+            VectorText vectorText = new VectorText(path, TextOrPath.Path);
             double norm = VectorText.NormVector(vectorText.vector);
             Assert.IsTrue(Math.Abs(norm - 1) < Math.Pow(10, -8));
+        }
+
+        [TestMethod]
+        public void ReadString()
+        {
+            VectorText v1 = new VectorText("a, b, c, c");
+            double norm = VectorText.NormVector(v1.vector);
+            Assert.IsTrue(Math.Abs(norm - 1) < Math.Pow(10, -8));
+        }
+
+        [TestMethod]
+        public void CosCollen()
+        {
+            string path = "test.txt";
+            using (StreamWriter sw = new StreamWriter(path))
+            {
+                sw.WriteLine("a b c");
+            }
+            VectorText v1 = new VectorText(path);
+            VectorText v2 = new VectorText(path);
+            Assert.IsTrue(Math.Abs(VectorText.Cos(v1, v2) - 1) < Math.Pow(10, -8));
+        }
+
+        [TestMethod]
+        public void RightAngel()
+        {
+            VectorText v1 = new VectorText("b");
+            VectorText v2 = new VectorText("a");
+            Assert.IsTrue(Math.Abs(VectorText.Cos(v1, v2)) < Math.Pow(10, -8));
+        }
+
+        [TestMethod]
+        public void ZeroVector()
+        {
+            VectorText v1 = new VectorText("");
+            VectorText v2 = new VectorText("aaa");
+            Assert.IsTrue(Math.Abs(VectorText.Cos(v1, v2)) < Math.Pow(10, -8));
+        }
+
+        [TestMethod]
+        public void Cos()
+        {
+            VectorText v1 = new VectorText("a a b b");
+            VectorText v2 = new VectorText("b b");
+            Assert.IsTrue(Math.Abs(VectorText.Cos(v1, v2) - Math.Sqrt(2)/2) < Math.Pow(10, -8));
         }
     }
 }
