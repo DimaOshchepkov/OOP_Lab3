@@ -33,33 +33,33 @@ namespace IdealWeight
         [TestMethod]
         public void Broke()
         {
-            var Vlad = new IdealWeight(height, age);
+            var idealWeight = new IdealWeight(height, age);
 
-            Assert.AreEqual(66, Vlad.Broke());
+            Assert.AreEqual(66, idealWeight.Broke());
         }
 
         [TestMethod]
         public void Cuttle()
         {
-            var Vlad = new IdealWeight(height, weight, age);
+            var idealWeight = new IdealWeight(height, weight, age);
 
-            Assert.AreEqual("Дефицит массы тела", Vlad.Cuttle());
+            Assert.AreEqual("Дефицит массы тела", idealWeight.Cuttle());
         }
 
         [TestMethod]
         public void Lorenz()
         {
-            var Vlad = new IdealWeight(height);
+            var idealWeight = new IdealWeight(height);
 
-            Assert.AreEqual(63, Vlad.Lorenz());
+            Assert.AreEqual(63, idealWeight.Lorenz());
         }
 
         [TestMethod]
         public void Cooper()
         {
-            var Vlad = new IdealWeight(height, gender);
+            var idealWeight = new IdealWeight(height, gender);
 
-            Assert.AreEqual(67.57, Vlad.Cooper());
+            Assert.AreEqual(67.57, idealWeight.Cooper());
         }
 
         [TestMethod]
